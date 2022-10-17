@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.reto.reto3.Service.ReservationService;
 import com.reto.reto3.model.Reservation;
-import com.reto.reto3.model.DTOs.CompletedAndCancelled;
-import com.reto.reto3.model.DTOs.TotalAndClient;
 
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
         RequestMethod.DELETE })
@@ -61,21 +59,5 @@ public class ReservationController {
     public boolean delete(@PathVariable("id") int reservationId) {
         return reservationService.delete(reservationId);
     }
-
-    @GetMapping("/report-dates/{fecha1}/{fecha2}")
-    public List<Reservation> getReservationsBetweenDatesReport(@PathVariable("fecha1") String fecha1, @PathVariable("fecha2") String fecha2){
-        return reservationService.getReservationsBetweenDatesResport(fecha1, fecha2);
-    }
-
-    @GetMapping("/report-dates/")
-    public CompletedAndCancelled getReservationStatusReport(){
-        return reservationService.getReservationStatusReport();
-    }
-
-    @GetMapping("/report-clients")
-    public List<TotalAndClient> getTopClientsReport(){
-        return reservationService.getTopClientsReport();
-    }
-
 
 }
